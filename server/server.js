@@ -35,10 +35,9 @@ const checkAccessToken = require('./src/middlewares/checkAccessToken');
 const authRoutes = require('./src/routes/auth/authRoutes');
 const userRoutes = require('./src/routes/user/userRoutes');
 const postRoutes = require('./src/routes/post/postRoutes');
-app.use('/api/v1/', postRoutes);
-app.use('/api/v1/', userRoutes);
-// app.use('/api/v1/post', checkAccessToken, postRoutes);
-app.use('/user/', authRoutes);
+app.use('/api/v1/', checkAccessToken, postRoutes);
+app.use('/api/v1/', checkAccessToken, userRoutes);
+app.use('/auth/', authRoutes);
 
 /**
  * Register global error middleware.

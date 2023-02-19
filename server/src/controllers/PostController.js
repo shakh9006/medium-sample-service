@@ -4,8 +4,7 @@ class PostController {
     async create(req, res, next) {
         try {
             const {title, content} = req.body;
-            // const {id} = req.user;
-            const id = 1
+            const {id} = req.user;
             const data = await PostService.create(title, content, id);
             res.send(data);
         } catch (e) {
